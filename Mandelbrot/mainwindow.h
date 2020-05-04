@@ -21,6 +21,8 @@ public:
 protected:
 	virtual void wheelEvent(QWheelEvent* event) override;
 	virtual void resizeEvent(QResizeEvent* event) override;
+	virtual void mouseMoveEvent(QMouseEvent* event) override;
+	virtual void mousePressEvent(QMouseEvent* event) override;
 
 private:
 	void drawImage();
@@ -40,9 +42,9 @@ private:
 	double m_reFactor;
 	double m_imFactor;
 	double m_scale = 1.0;
-	QPointF m_offset = { 0, 0 };
+	QPointF m_offset;
 	const int m_numThreads = 7;
-	const int m_iterations = 1000;
+	const int m_iterations = 4000;
 	std::vector<std::thread> m_threads;
-	QPointF m_lastMouseMovePosition = {};
+	QPointF m_previousMousePosition = {};
 };
